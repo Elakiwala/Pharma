@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class Main {
+	private Patient patient;
+	
 	public static void mainMenu() {
 		
 		/*
@@ -153,6 +155,8 @@ public class Main {
 
 	public static void listePatients() {
 		//afficher la liste des patients avec leurs prescriptions associées
+		System.out.println(chambre.listePatients);
+		mainMenu();
 	}
 	public static void addPatient() {
 		//verifier que le nombre max de patients dans l'hopital n'est pas atteint
