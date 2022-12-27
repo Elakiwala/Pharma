@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class Chambre {
+	//base de données des patients a faire avec OCaml et CSV..
 	private Patient[] patients;
 	private int nbPatients = 0;
 	private int  NBPATIENTMAX = 20;
@@ -37,16 +38,16 @@ public class Chambre {
 			
 			if(userInput >= 1 && userInput <= 4){
 				if(userInput == 1) {
-					String newNom = inputOutput("\nSaisissez le nouveau Nom: ");
+					//String newNom = inputOutput("\nSaisissez le nouveau Nom: ");
 					//patients[numPatient].nom = newNom;
 				}
 				if(userInput == 2) {
-					String newPrenom = inputOutput("\nSaisissez le nouveau prénom: ");
+					//String newPrenom = inputOutput("\nSaisissez le nouveau prénom: ");
 					//patients[numPatient].prenom = newPrenom;
 				}
 				if(userInput == 3) {
-					String newAgeS = inputOutput("\nSaisissez le nouvel age du patient: ");
-					int newAge = Integer.parseInt(newAgeS);
+					//String newAgeStr = inputOutput("\nSaisissez le nouvel age du patient: ");
+					//int newAge = Integer.parseInt(newAgeStr);
 					//patients[numPatient].age = newAge;
 				}
 				if(userInput == 4) {
@@ -62,10 +63,11 @@ public class Chambre {
 		return patients[numPatient];
 	}
 	
-	public void listePatients() {
+	public String listePatients() {
 		for(int i = 0; i < nbPatients; i++) {
-			System.out.println("- " + patients[i]);
+			return "- " + patients[i] + "";
 		}
+		return null;
 	}
 	
 	

@@ -5,7 +5,11 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class Main {
-	private Patient patient;
+	private static Patient patient;
+	private static Chambre chambre;
+	private static Pharmacie stock;
+	private static Medicament medicament;
+	
 	
 	public static void mainMenu() {
 		
@@ -22,7 +26,7 @@ public class Main {
 		//Prend la réponse de l'utilisateur
 		
 		try {
-			int userInput = Integer.parseInt(inputOutput("Votre saisie est incorrecte. Veuillez entrer un chiffre correspondant au menu."));
+			int userInput = Integer.parseInt(inputOutput("Veuillez entrer un chiffre correspondant au menu."));
 			
 			if(userInput >= 0 && userInput <= 4){
 				if (userInput == 1) {
@@ -32,23 +36,23 @@ public class Main {
 					System.out.println("4. Modifier un patient");
 					System.out.println("0. Menu exit");
 					try { 
-						int userInput2 = Integer.parseInt(inputOutput("Votre saisie est incorrecte. Veuillez entrer un chiffre correspondant au menu."));
+						int userInput2 = Integer.parseInt(inputOutput("Veuillez entrer un chiffre correspondant au menu."));
 
 						if(userInput2 >= 0 && userInput2 <= 4) {
 							if(userInput2 == 1) {
-								//listePatients();
+								listePatients();
 							}
 							if(userInput2 == 2) {
-								//addPatient();
+								addPatient();
 							}
 							if(userInput2 == 3) {
-								//delPatient();
+								delPatient();
 							}
 							if(userInput2 == 4) {
-								//editPatient();
+								editPatient();
 							}
 							if(userInput2 == 0) {
-								System.exit(0);
+								mainMenu();
 							}
 						} else {
 			        		System.out.println("Please enter a number from 0 - 6");
@@ -65,22 +69,22 @@ public class Main {
 					System.out.println("0. Menu exit");
 					// médicaments = enum ou médicament = liste de n-uplets
 					try {
-						int userInput2 = Integer.parseInt(inputOutput("Votre saisie est incorrecte. Veuillez entrer un chiffre correspondant au menu."));
+						int userInput2 = Integer.parseInt(inputOutput("Veuillez entrer un chiffre correspondant au menu."));
 
 						if(userInput2 >= 0 && userInput2 <= 1) {
 							if(userInput2 == 1) {
 								//voirStock();
 							}
 							if(userInput2 == 0) {
-								System.exit(0);
+								mainMenu();
 							} 
 						} else {
-				        		System.out.println("Please enter a number from 0 - 6");
+				        		System.out.println("Please enter a number from 0 - 1");
 				            	mainMenu();
 				        	}
 						
 					} catch (NumberFormatException e) {
-			        	System.out.println("Merci de rentrer un chiffre de 0 à 6");
+			        	System.out.println("Merci de rentrer un chiffre de 0 à 1");
 			        	mainMenu();
 						}
 					}
@@ -93,7 +97,7 @@ public class Main {
 					System.out.println("0. Menu Exit");
 					
 					try {
-						int userInput2 = Integer.parseInt(inputOutput("Votre saisie est incorrecte. Veuillez entrer un chiffre correspondant au menu."));
+						int userInput2 = Integer.parseInt(inputOutput("Veuillez entrer un chiffre correspondant au menu."));
 
 						if(userInput2 >= 0 && userInput2 <= 4) {
 							if(userInput2 == 1) {
@@ -109,14 +113,14 @@ public class Main {
 								//delAllCommande();
 							}
 							if(userInput2 == 0) {
-								System.exit(0);
+								mainMenu();
 							} 
 						} else {
-				        		System.out.println("Please enter a number from 0 - 6");
+				        		System.out.println("Please enter a number from 0 - 4");
 				            	mainMenu();
 				        	}
 					} catch (NumberFormatException e) {
-			        	System.out.println("Merci de rentrer un chiffre de 0 à 6");
+			        	System.out.println("Merci de rentrer un chiffre de 0 à 4");
 			        	mainMenu();
 			        }
 				}
@@ -125,25 +129,26 @@ public class Main {
 					System.out.println("0. Menu exit");
 					
 					try {
-						int userInput2 = Integer.parseInt(inputOutput("Votre saisie est incorrecte. Veuillez entrer un chiffre correspondant au menu."));
+						int userInput2 = Integer.parseInt(inputOutput("Veuillez entrer un chiffre correspondant au menu."));
 
 						if(userInput2 >= 0 && userInput2 <= 1) {
 							if(userInput2 == 1) {
 								//faireSoins();
 							}
 							if(userInput2 == 0) {
-								System.exit(0);
+								mainMenu();;
 							} 
 						} else {
-				        		System.out.println("Please enter a number from 0 - 6");
+				        		System.out.println("Please enter a number from 0 - 1");
 				            	mainMenu();
 				        	}
 					} catch (NumberFormatException e) {
-			        	System.out.println("Merci de rentrer un chiffre de 0 à 6");
+			        	System.out.println("Merci de rentrer un chiffre de 0 à 1");
 			        	mainMenu();
 			        }
 				}
 				if(userInput == 0) {
+					System.out.println("Au revoir!");
 					System.exit(0);
 				}
 			
@@ -155,7 +160,7 @@ public class Main {
 
 	public static void listePatients() {
 		//afficher la liste des patients avec leurs prescriptions associées
-		System.out.println(chambre.listePatients);
+		System.out.println(chambre.listePatients());
 		mainMenu();
 	}
 	public static void addPatient() {
@@ -164,18 +169,33 @@ public class Main {
 		//lire le nom du patient
 		String nom = inputOutput("\nEntrer le nom du patient: ");
 		
-		//lire le nombre de médicaments dont il a besoin
-		String quantite = inputOutput("\nEntrer la quantité de médicament le patient a besoin: ");
+		//lire le prenom du patient
+		String prenom = inputOutput("\nEntrer le prenom du patient: ");
 		
-		//for(int i = 0; i<quantiten; i++){
+		//lire l'age du patient
+		String ageStr = inputOutput("\nEntrer l'age du patient: ");
+		int age = Integer.parseInt(ageStr);
+		
+		//lire le nombre de médicaments dont il a besoin
+		String quantiteStr = inputOutput("\nEntrer la quantité de médicament le patient a besoin: ");
+		int quantite = Integer.parseInt(quantiteStr);
+		
+		String[] prescription = new String[20];
+		for(int i = 0; i<quantite; i++){
+			String medoc = inputOutput("\nSaisissez le nom du médicament: ");
+			prescription[i] = medoc;
+		}
+			//TODO
 			//lire le nom de chaque médicaments	
-				//verifier que le médicament existe dans la liste
+				//verifier que le médicament existe dans la liste!!!!!
 				//si oui
 					// +1 médicament dans la pharmacie (dotation)
 					// ajouter le médicament dans la préscription (fiche) du patient 
 				//sinon
 					//demander de resaisir ou d'arreter
-		
+		Patient name; 
+		name = new Patient(nom, prenom, age, prescription);
+		chambre.addPatient(name);
 		/**ajouter le patient a la liste**/
 	}
 	public static void delPatient() {
@@ -251,4 +271,9 @@ public class Main {
 	    }
 	    return returnString;
     }
+    
+    public static void main(String[] args) {
+		System.out.println("Bienvune a l'hopital Lansalot!\n");
+		mainMenu();
+	}
 }
