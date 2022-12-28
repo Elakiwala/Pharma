@@ -5,10 +5,10 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class Main {
-	private static Patient patient;
+	//private static Patient patient;
 	private static Chambre chambre;
-	private static Pharmacie stock;
-	private static Medicament medicament;
+	//private static Pharmacie stock;
+	//private static Medicament medicament;
 	
 	
 	public static void mainMenu() {
@@ -193,9 +193,9 @@ public class Main {
 					// ajouter le médicament dans la préscription (fiche) du patient 
 				//sinon
 					//demander de resaisir ou d'arreter
-		Patient name; 
+		/*Patient name; 
 		name = new Patient(nom, prenom, age, prescription);
-		chambre.addPatient(name);
+		chambre.addPatient();*/
 		/**ajouter le patient a la liste**/
 	}
 	public static void delPatient() {

@@ -5,6 +5,7 @@ public class Patient {
 	private String prenom;
 	private int age;
 	private String[] prescription;
+	
 	//base de données des patients a faire avec OCaml et CSV...
 	
 	public Patient(String nom, String prenom, int age, String[] prescription) {
@@ -34,4 +35,6 @@ public class Patient {
 	public String toString() {
 		return "Patient [nom =" + nom + ", prenom =" + prenom + ", age =" + age + ", prescription =" + prescription + "]";
 	}
+	
+	
 }
