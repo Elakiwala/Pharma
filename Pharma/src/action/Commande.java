@@ -54,5 +54,4 @@ public class Commande {
 		//remettre la commande a 0
 		//remplire toute la pharmacie : dotation + besoin des patients
 	}
-	
 }

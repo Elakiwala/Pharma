@@ -15,7 +15,7 @@ public class Patient {
 	private String[][] patients = {{"Manoban", "Lalisa", "25", "Doliprane"}, {"Fraser", "Jamie", "27", "Fucidine Doliprane"}, {"Windsor", "Elizabeth", "96", "Doliprane Tahor Amlor Modopar Fraxiparine"}, {"Oda", "Eiichiro", "47", "Doliprane Spiriva Vogalene Contramal"}, {"Watson", "Emma", "32", "Doliprane Kardegic"},{"Ortega", "Jenna", "20", "Doliprane"}, {"Macron", "Emmanuel", "45", "Doliprane Smecta"}, {"Musk", "Elon", "51", "Doliprane Primperan Fragmin"}, {"Zimmer", "Hans", "65", "Doliprane Domperidone Levothyrox Ketoprofene"}, {"Orlinski", "Jakub", "32", "Doliprane Coumadine Sterdex Topaldic"}, {"Desplat", "Alexandre", "61", "Doliprane"}}; 
 	private int nbPatients = 11;
 	private int NBPATIENTMAX = 20;
-	//private final String SEPARATEUR = " ";
+	private final String SEPARATEUR = " ";
 	
 	//les medicaments viennent de la classe Medicament 
 	//dans cette liste on va juste garder le String nom du medicament en question soit : medoc.nom
@@ -52,7 +52,7 @@ public class Patient {
 			patients[nbPatients-1][0] = nom;
 			patients[nbPatients-1][1] = prenom;
 			patients[nbPatients-1][2] = ageStr;
-			patients[nbPatients-1][3] = prescription  ;
+			patients[nbPatients-1][3] = prescription;
 		}
 	}
 	
@@ -60,10 +60,24 @@ public class Patient {
 		if(nbPatients == 0) {
 			System.out.println("L'hopital est déjà vide");
 		} else {
-			//String medoc[] = prescription.split(SEPARATEUR);
+			//fonction de recherche dans un liste ---> Classe MERE!!!!!!
+			//trouver le patient dans la liste
+			int numPatient=0;
+			for(int i = 0; i<nbPatients; i++) {
+				if(patient.nom == patients[i][0]) {
+					numPatient = i;
+				}
+			}
+//			String nom = patients[numPatient][0];
+//			String prenom = patients[numPatient][1];
+//			String age = patients[numPatient][2];
+//			String prescription = patients[numPatient][3];
+			
+			String medoc[] = prescription.split(SEPARATEUR);
 			//for chaque medoc le deduire du stock de la pharmacie
+			
 			//supprimer le patient de la liste (si c'est seulement ça qui est necessaire pour vraiment le supprimer)
-				//remove(liste[i][])
+			//patients.remove(numPatient);
 			nbPatients --;
 		}
 	}
@@ -111,7 +125,7 @@ public class Patient {
 						//verifier s'il est dans la liste
 						//concatener: ordonnance = ordonnance + medoc
 						//mettre remplacer ancienne prescription par l'ordonnance
-						// modifier la liste
+						//modifier la liste
 					}
 				}
 			}
@@ -175,4 +189,11 @@ public class Patient {
 	    return returnString;
     }
 	
+    public static void main(String[] args) {
+    	//System.out.println(listePatients());
+    	Patient eloy;
+    	eloy = new Patient("Mbeleck", "Eloy", 9, "Doliprane Smecta");
+    	eloy.listePatients();
+	}
+    
 }
