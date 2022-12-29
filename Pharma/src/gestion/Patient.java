@@ -6,6 +6,8 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 
 public class Patient {
+	private Medicament medoc;
+	
 	private String nom;
 	private String prenom;
 	private int age;
@@ -15,6 +17,9 @@ public class Patient {
 	private int NBPATIENTMAX = 20;
 	//private final String SEPARATEUR = " ";
 	
+	//les medicaments viennent de la classe Medicament 
+	//dans cette liste on va juste garder le String nom du medicament en question soit : medoc.nom
+	//
 	
 	public Patient(String nom, String prenom, int age, String prescription) {
 		this.nom = nom;
@@ -64,6 +69,15 @@ public class Patient {
 	}
 	
 	public void editPatient(Patient patient) {
+		//fonction de recherche dans un liste ---> Classe MERE!!!!!!
+		//trouver le patient dans la liste
+		int numPatient=0;
+		for(int i = 0; i<nbPatients; i++) {
+			if(patient.nom == patients[i][0]) {
+				numPatient = i;
+			}
+		}
+		
 		System.out.println("1. Modifier le nom");
 		System.out.println("2. Modifier le prenom");
 		System.out.println("3. Modifier l'age");
@@ -76,17 +90,17 @@ public class Patient {
 				if(userInput == 1) {
 					String newNom = inputOutput("\nSaisissez le nouveau Nom: ");
 					patient.nom = newNom;
-					//modifier la liste
+					patients[numPatient][0] = newNom;
 				}
 				if(userInput == 2) {
 					String newPrenom = inputOutput("\nSaisissez le nouveau prénom: ");
 					patient.prenom = newPrenom;
-					//modifier la liste
+					patients[numPatient][1] = newPrenom;
 				}
 				if(userInput == 3) {
 					String newAgeStr = inputOutput("\nSaisissez le nouvel age du patient: ");
 					patient.age = Integer.parseInt(newAgeStr);
-					//modifier la liste
+					patients[numPatient][2] = newAgeStr;
 				}
 				if(userInput == 4) {
 					//String ordonance;
@@ -135,11 +149,11 @@ public class Patient {
 		return prescription;
 	}
 	
-	@Override
-	public String toString() {
-		return "Patient [nom =" + nom + ", prenom =" + prenom + ", age =" + age + ", prescription =" + prescription + "]";
-	}
-	
+//	@Override
+//	public String toString() {
+//		return "Patient [nom =" + nom + ", prenom =" + prenom + ", age =" + age + ", prescription =" + prescription + "]";
+//	}
+//	
 	
 
 	/**

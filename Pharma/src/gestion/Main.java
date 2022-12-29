@@ -4,6 +4,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+import action.Commande;
+import action.Soin;
+
 public class Main {
 	//private static Patient patient;
 	private static Chambre chambre;
@@ -104,10 +107,10 @@ public class Main {
 								//voirCommande();
 							}
 							if(userInput2 == 2) {
-								//addToCommande();
+								//addTo1Commande();
 							}
 							if(userInput2 == 3) {
-								//delFromCommande();
+								//del1FromCommande();
 							}
 							if(userInput2 == 4) {
 								//delAllCommande();
@@ -218,7 +221,7 @@ public class Main {
 	public static void voirCommande() {
 		//afficher l'état de la commande (liste de nom + quantité)
 	}
-	public static void addToCommande() {
+	public static void add1ToCommande() {
 		//lire nom du médicament
 		String nom = inputOutput("\nEntrer le nom du médicament a ajouter: ");
 		
@@ -227,7 +230,7 @@ public class Main {
 		
 		//ajotuer a la commande
 	}
-	public static void delFromCommande() {
+	public static void del1FromCommande() {
 		//lire le nom du médicament
 		String nom = inputOutput("\nEntrer le nom du médicament a supprimer: ");
 		
