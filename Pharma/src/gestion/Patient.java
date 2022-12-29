@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 
 public class Patient {
-	private Medicament medoc;
+	//private Medicament medoc;
 	
 	private String nom;
 	private String prenom;

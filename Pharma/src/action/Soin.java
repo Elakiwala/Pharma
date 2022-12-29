@@ -3,7 +3,7 @@ package action;
 import gestion.Patient;
 
 public class Soin {
-	private Patient patient;
+	//private Patient patient;
 	
 	public void farieSoin(Patient patient) {
 		//trouver le patient dans la liste des patients
