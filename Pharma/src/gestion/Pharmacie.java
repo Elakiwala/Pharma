@@ -1,7 +1,6 @@
 package gestion;
 
 public class Pharmacie {
-	//base de donnée du stock a faire avec OCaml et CSV
 	private String[][] stock = {{"Doliprane", "20"},{"Kardegic", "10"},{"Ketoprofene", "12"}, {"Contramal", "17"},{"Contramal", "8"},{"Primperan", "2"},{"Spiriva", "13"},{"Fragmin", "16"},{"Fraxiparine","4"},{"Domperidone", "9"},{"Levothyrox", "18"},{"Smecta", "14"},{"Modopar","7"},{"Amlor","15"},{"Coumadine","19"},{"Sterdex","6"},{"Topalgic", "5"},{"Temerite", "3"},{"Tahor", "11"},{"Fucidine","2"}};
 	private int[] dotation = {20,10,12,17,8,2,13,16,4,9,18,14,7,15,19,6,5,3,11,2};
 	private int nbMedoc = 20;
